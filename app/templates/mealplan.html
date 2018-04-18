@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %} My Meal Plan {% endblock %}
+
+{% block style %} 
+<link rel="stylesheet" type="text/css" href="/static/css/mealplan.css">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+<div class="row col-12">
+<p><h1 id="{{ week_id }}">Meal Plan</h1></p>
+</div>
+
+<div class="row col-12">
+    <div class="col-6 meal-week-picker form-group">
+        <form action="/create-new-meal-plan" method="post" class="form-inline">
+            <div class="input-group">
+                <input type="text" class="form-control" id="weekpicker" required="required" name="picked-week" placeholder="Select Week"/>
+                <div class="input-group-btn">
+                    <input type="submit" id="week-picker-btn" class="btn btn-default form-control" name="week-picker-btn" value="Go">
+                </div>
+            </div>
+        </form>
+    </div>
