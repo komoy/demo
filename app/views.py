@@ -37,10 +37,12 @@ def listrecipe():
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute('select  * from recipe')
-    d = cursor.fetchall()
+    table= cursor.fetchall()
     cursor.close()
     conn.close()
-    return str(res)
+    #return str(res)
+    
+    return render_template('result.html', table=table)
 
 @app.route('/recipe',methods=['POST','GET'])
 def recipe():

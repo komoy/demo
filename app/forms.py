@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, SelectField, DateField,SubmitFie
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import InputRequired, DataRequired, EqualTo
 ALLOWED_EXTENSIONS = [ 'png', 'jpg', 'jpeg', 'gif']
-
+from flask_table import Table, Col
     
 
 
@@ -46,6 +46,16 @@ class RecipeForm(FlaskForm):
     serving_quantities =StringField('serving quantity',validators=[InputRequired()])
     
     calories=StringField('calories',validators=[InputRequired()])
+    
+    
+ 
+class Results(Table):
+    recipe_id = Col('Recipe Id', show=False)
+    recipe_name = Col('Recipe Name')
+    prep_time= Col('Prep Time')
+    serving_quantities = Col('Serving Quantities')
+    calories = Col('Calories')
+    
     
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])

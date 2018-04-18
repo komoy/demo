@@ -9,3 +9,4 @@ wsgiref==0.1.2
 flask-mysql==1.4.0
 flask-wtf
 Flask-Login
+flask_table

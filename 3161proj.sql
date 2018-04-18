@@ -41,10 +41,10 @@ CREATE TABLE recipe(
 	serving_quantities int, 
 	calories int,
 	PRIMARY KEY(recipe_id)
-);
+)AUTO_INCREMENT=2000;
 
 CREATE TABLE adds(
-	recipe_id int, 
+	recipe_id int , 
 	user_id int AUTO_INCREMENT NOT NULL,
 	creation_date DATETIME,
 	PRIMARY KEY(recipe_id,user_id),
@@ -53,7 +53,7 @@ CREATE TABLE adds(
 );
 
 CREATE TABLE addition_log(
-	recipe_id int,
+	recipe_id int ,
 	user_id int AUTO_INCREMENT NOT NULL,
 	date_add DATE,
 	PRIMARY KEY(recipe_id,user_id),
@@ -64,7 +64,7 @@ CREATE TABLE addition_log(
 CREATE TABLE instruction(
 	measurement int,
 	step int,
-	recipe_id int,
+	recipe_id int AUTO_INCREMENT NOT NULL,
 	instruction_id int,
 	directions varchar(55),
 	PRIMARY KEY(instruction_id, recipe_id),
@@ -91,8 +91,9 @@ UNIQUE(day)
 );
 
 CREATE TABLE ingredients(
-	i_id int,
-	name varchar(55)
+	i_id int AUTO_INCREMENT NOT NULL,
+	name varchar(55),
+	PRIMARY KEY(i_id)
 );
 
 CREATE TABLE supermarket_list(
@@ -107,9 +108,7 @@ CREATE TABLE contains(
 	recipe_id int,
 	i_id int,
 	quantity int,
-    UNIQUE(quantity)
+    UNIQUE(quantity),
+    PRIMARY KEY(recipe_id),
+    FOREIGN KEY(i_id) REFERENCES ingredients(i_id) ON DELETE CASCADE ON UPDATE CASCADE 
 );
-
-
-
-
